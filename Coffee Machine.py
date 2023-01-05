@@ -32,7 +32,7 @@ resources = {
 }
 
 
-def checkResources(ingredients):
+def isResourcesAvailable(ingredients):
     for ingredient in ingredients:
         if resources[ingredient] < ingredients[ingredient]:
             print(f"Sorry there is not enough {ingredient}.")
@@ -52,7 +52,7 @@ def collectCoins():
         return 0
 
 
-def initiateTransaction(money, ordered_coffee):
+def isTransactionSuccessfull(money, ordered_coffee):
     global account_balance
     coffee = MENU[ordered_coffee]
 
@@ -78,9 +78,9 @@ def makeCoffee(ordered_coffee):
 
 
 def processCoffee(ordered_coffee):
-    if checkResources(MENU[ordered_coffee]["ingredients"]):
+    if isResourcesAvailable(MENU[ordered_coffee]["ingredients"]):
         money = collectCoins()
-        if initiateTransaction(money, ordered_coffee):
+        if isTransactionSuccessfull(money, ordered_coffee):
             makeCoffee(ordered_coffee)
 
 
